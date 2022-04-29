@@ -15,14 +15,15 @@ def deneme():
     return "OK"
 
 
-
 @app.route('/')
 def ana_sayfa():
     urunlistesi = urunler_tablosu.find({})
     return render_template("anasayfa.html", urun_listesi=urunlistesi)
 
+
 @app.route('/telefon')
 def telefon_goster():
   return render_template("telefon.html")
+
 
 app.run(debug=True, host='0.0.0.0', port=5000)
