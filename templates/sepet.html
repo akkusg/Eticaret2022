@@ -10,7 +10,7 @@
 
         <div class="mt-4 p-5 bg-primary text-white rounded">
             <h1>E-ticaret 2022 Sitesi</h1>
-            <p>Muhteşem elektronik ürünler</p>
+            <p>Sepetteki Ürünler</p>
           </div>
 
           <div class="btn-group">
@@ -29,28 +29,25 @@
         
         <div class="container-fluid">
             <div class="row">
-                {% for urun in urun_listesi %}
-                <div class="col-sm-3">
-                    <br>&nbsp;
-                    <br>
-                    <div class="card" style="width:230px">
-                        <img class="card-img-top" src='{{ urun["resim"] }}' alt="Card image" style="width:100%">
-                        <div class="card-body">
-                          <h4 class="card-title">{{ urun["urun_adi"] }}</h4>
-                          <p class="card-text">{{ urun["aciklama"] }}</p>
-                          <p class="card-text">Fiyat: {{ urun["fiyat"] }}</p>
-                          <form action="/sepeteekle" method="post">
-                            <input type="hidden" id="oturum_id" name="oturum_id" value="oturum-1">
-                            <input type="hidden" id="urun_id" name="urun_id" value='{{ urun["_id"] }}'>
-                            <input type="submit" class="btn btn-primary" value="Sepete Ekle">
-                          </form>
-                          
-                        </div>
-                      </div>
-                    <br>&nbsp;
-                    <br>
-                </div>
+              <table border="1">
+                {% for urun in sepet_urun_listesi %}
+                <tr>
+                  <td>
+                    <img src='{{ urun["resim"] }}' style="width:80px">
+                  </td>
+                  <td>
+                    <b>{{ urun["urun_adi"] }}</b>
+                  </td>
+                  <td>
+                    {{ urun["aciklama"] }}
+                  </td>
+                  <td>
+                    Fiyat: {{ urun["fiyat"] }}
+                  </td>
+                </tr>
                 {% endfor %}
+              </table>
+                
                 
                 
             </div>
